@@ -219,10 +219,10 @@ class MarkdownParser extends Parsedown {
 
 		if ( 'yes' === githuber_get_option( 'support_inline_code_keyboard_style', 'githuber_extensions' ) ) {
 			if ( '}' === substr( $matches[1], -1 ) && '{' !== substr( $matches[1], 0, 1 ) ) {
-				return '<code class="kb-btn">' . $this->hash_block( esc_html( $matches[1] ) ) . '</code>';
+				return $this->hash_block( '<code class="kb-btn">' . esc_html( $matches[1] ) . '</code>' );
 			}
 		}
-		return '<code>' . $this->hash_block( esc_html( $matches[1] ) ) . '</code>';
+		return $this->hash_block( '<code>' . esc_html( $matches[1] ) . '</code>' );
 	}
 
 	/**
