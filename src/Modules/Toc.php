@@ -111,6 +111,10 @@ class Toc extends ModuleAbstract {
 					scope: ".post",
 				});
 
+				if ($("#md-post-toc").find("a").length === 0) {
+					$(".post-toc-block").hide();
+				}
+
 				$("#md-post-toc a").click(function(e) {
 					e.preventDefault();
 					var aid = $( this ).attr( "href" );
