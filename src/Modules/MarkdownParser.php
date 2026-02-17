@@ -92,6 +92,10 @@ class MarkdownParser extends Parsedown {
 
 		$parsed_content = $this->do_restore( $parsed_content );
 
+		// Add line-numbers class to fenced code blocks so Prism's line-numbers
+		// plugin activates without relying on client-side class injection.
+		$parsed_content = str_replace( '<pre><code class="language-', '<pre class="line-numbers"><code class="language-', $parsed_content );
+
 		return $parsed_content;
 	}
 
