@@ -636,7 +636,6 @@ class Prism extends ModuleAbstract {
 					}
 					$style_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/toolbar/prism-toolbar.min.css';
 					$style_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/match-braces/prism-match-braces.min.css';
-					$style_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/treeview/prism-treeview.min.css';
 					break;
 
 				case 'jsdelivr':
@@ -646,7 +645,6 @@ class Prism extends ModuleAbstract {
 					}
 					$style_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/toolbar/prism-toolbar.css';
 					$style_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/match-braces/prism-match-braces.css';
-					$style_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/treeview/prism-treeview.css';
 					break;
 
 				default:
@@ -656,7 +654,6 @@ class Prism extends ModuleAbstract {
 					}
 					$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/toolbar/prism-toolbar.css';
 					$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/match-braces/prism-match-braces.css';
-					$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/treeview/prism-treeview.css';
 					break;
 			}
 
@@ -694,7 +691,6 @@ class Prism extends ModuleAbstract {
 					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/toolbar/prism-toolbar.min.js';
 					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js';
 					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/match-braces/prism-match-braces.min.js';
-					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/treeview/prism-treeview.min.js';
 
 					break;
 
@@ -712,7 +708,6 @@ class Prism extends ModuleAbstract {
 					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/toolbar/prism-toolbar.min.js';
 					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js';
 					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/match-braces/prism-match-braces.min.js';
-					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/treeview/prism-treeview.min.js';
 
 					break;
 
@@ -730,7 +725,6 @@ class Prism extends ModuleAbstract {
 					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/toolbar/prism-toolbar.min.js';
 					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js';
 					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/match-braces/prism-match-braces.min.js';
-					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/treeview/prism-treeview.min.js';
 
 					break;
 			}
