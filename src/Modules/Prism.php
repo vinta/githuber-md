@@ -597,6 +597,22 @@ class Prism extends ModuleAbstract {
 		add_action( 'wp_print_footer_scripts', array( $this, 'auto_loader_config_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'front_enqueue_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'front_print_footer_scripts' ) );
+		// Prism's match-braces plugin activates only inside an ancestor carrying this class; putting it on <body> covers posts saved before the plugin was enabled.
+		add_filter( 'body_class', array( $this, 'add_match_braces_body_class' ) );
+	}
+
+	/**
+	 * Enable the match-braces plugin for every code block on the page.
+	 *
+	 * @param array $classes Body classes.
+	 *
+	 * @return array
+	 */
+	public function add_match_braces_body_class( $classes ) {
+		if ( $this->is_module_should_be_loaded( self::MD_POST_META_PRISM ) ) {
+			$classes[] = 'match-braces';
+		}
+		return $classes;
 	}
 
 	/**
@@ -618,6 +634,9 @@ class Prism extends ModuleAbstract {
 					if ( 'yes' === $prism_line_number ) {
 						$style_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.min.css';
 					}
+					$style_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/toolbar/prism-toolbar.min.css';
+					$style_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/match-braces/prism-match-braces.min.css';
+					$style_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/treeview/prism-treeview.min.css';
 					break;
 
 				case 'jsdelivr':
@@ -625,6 +644,9 @@ class Prism extends ModuleAbstract {
 					if ( 'yes' === $prism_line_number ) {
 						$style_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/line-numbers/prism-line-numbers.css';
 					}
+					$style_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/toolbar/prism-toolbar.css';
+					$style_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/match-braces/prism-match-braces.css';
+					$style_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/treeview/prism-treeview.css';
 					break;
 
 				default:
@@ -632,6 +654,9 @@ class Prism extends ModuleAbstract {
 					if ( 'yes' === $prism_line_number ) {
 						$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/line-numbers/prism-line-numbers.css';
 					}
+					$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/toolbar/prism-toolbar.css';
+					$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/match-braces/prism-match-braces.css';
+					$style_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/treeview/prism-treeview.css';
 					break;
 			}
 
@@ -666,6 +691,11 @@ class Prism extends ModuleAbstract {
 					// AutoLoader plugin
 					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/autoloader/prism-autoloader.min.js';
 
+					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/toolbar/prism-toolbar.min.js';
+					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js';
+					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/match-braces/prism-match-braces.min.js';
+					$script_url[] = 'https://cdnjs.cloudflare.com/ajax/libs/prism/' . $this->prism_version . '/plugins/treeview/prism-treeview.min.js';
+
 					break;
 
 				case 'jsdelivr':
@@ -679,6 +709,11 @@ class Prism extends ModuleAbstract {
 					// AutoLoader plugin (Add since 1.11.4)
 					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/autoloader/prism-autoloader.min.js';
 
+					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/toolbar/prism-toolbar.min.js';
+					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js';
+					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/match-braces/prism-match-braces.min.js';
+					$script_url[] = 'https://cdn.jsdelivr.net/npm/prismjs@' . $this->prism_version . '/plugins/treeview/prism-treeview.min.js';
+
 					break;
 
 				default:
@@ -691,6 +726,11 @@ class Prism extends ModuleAbstract {
 
 					// AutoLoader plugin (Add since 1.11.4)
 					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/autoloader/prism-autoloader.min.js';
+
+					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/toolbar/prism-toolbar.min.js';
+					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js';
+					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/match-braces/prism-match-braces.min.js';
+					$script_url[] = $this->githuber_plugin_url . 'assets/vendor/prism/plugins/treeview/prism-treeview.min.js';
 
 					break;
 			}
