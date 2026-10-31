@@ -23,7 +23,7 @@ class Prism extends ModuleAbstract {
 	 *
 	 * @var string
 	 */
-	public $prism_version = '1.29.0';
+	public $prism_version = '1.30.0';
 
 	/**
 	 * The priority order to load CSS file, the value should be higher than theme's.
